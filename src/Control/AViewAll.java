@@ -69,7 +69,7 @@ public class AViewAll extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(735, 335));
+        setPreferredSize(new java.awt.Dimension(920, 400));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         jLabel1.setText("Admins");
@@ -90,6 +90,7 @@ public class AViewAll extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setIcon(new javax.swing.ImageIcon("G:\\MA\\jdbc\\student\\img\\Eye-2-icon.png")); // NOI18N
         jButton1.setText("Print Report");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,8 +109,8 @@ public class AViewAll extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
@@ -121,8 +122,8 @@ public class AViewAll extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -133,23 +134,12 @@ public class AViewAll extends javax.swing.JInternalFrame {
     
 
         
-       try{
-            InputStream in=new FileInputStream(new File("G:\\MA\\Bus Reservation\\src\\Reports\\admin.jrxml"));
-            JasperDesign jd=JRXmlLoader.load(in);
-            String sql="select * from admin";
-            JRDesignQuery newQuery=new JRDesignQuery();
-            newQuery.setText(sql);
-            jd.setQuery(newQuery);
-            JasperReport jr=JasperCompileManager.compileReport(jd);
-            HashMap para=new HashMap();
-          
-            JasperPrint j=JasperFillManager.fillReport(jr,para,con);
-            JasperViewer.viewReport(j,false);
-            OutputStream os=new FileOutputStream(new File("G:\\MA\\genReport"));
-            JasperExportManager.exportReportToPdfStream(j, os);
-            
+      MessageFormat header=new MessageFormat("Report Print");
+        MessageFormat footer=new MessageFormat("Page(0,number,integer)");
+        try{
+            jTable1.print(JTable.PrintMode.NORMAL, header,footer);
         }catch(Exception e){
-                JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
