@@ -106,7 +106,7 @@ public class AddAdmin extends javax.swing.JInternalFrame {
             int x=st.executeUpdate(s);
             t1.setText("");
             t2.setText("");
-             JOptionPane.showConfirmDialog(null, "Created Your User Account. ","congratulations.!",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+             JOptionPane.showConfirmDialog(null, "Created Your Admin Account. ","congratulations.!",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
         }
         catch(Exception  e)
         {

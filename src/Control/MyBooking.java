@@ -48,7 +48,7 @@ public class MyBooking extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(750, 350));
+        setPreferredSize(new java.awt.Dimension(850, 500));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 27)); // NOI18N
         jLabel1.setText("My Booking");
